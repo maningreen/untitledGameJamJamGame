@@ -10,6 +10,7 @@ LDFLAGS = -lraylib -lm
 SRC = src/*.c
 OUTPUT = build/game
 WEBOUTPUT = build/index.html
+WEBGARBAGE = src/*.gch
 OUTDIR = build/
 
 program:
@@ -20,9 +21,11 @@ windows:
 
 web:
 	$(WEBCC) $(SRC) -o $(WEBOUTPUT) $(LDFLAGS) $(WEBFLAGS)
+	rm -f $(WEBGARBAGE)
 
 profile:
 	$(CC) $(SRC) -o $(OUTPUT) $(LDFLAGS) $(PROFFLAGS)
 
 clean:
 	rm -f $(OUTDIR)* $(WEB-OUT)
+	rm -f $(WEBGARBAGE)
