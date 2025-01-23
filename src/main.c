@@ -291,9 +291,10 @@ int main() {
     drawCircle(&planet, globalScreenDimensions);
     drawBase(&base, globalScreenDimensions);
 
-    DrawText(TextFormat("score: %.1f", base.score), camera.base.target.x - camera.base.offset.x / camera.base.zoom, camera.base.target.y - camera.base.offset.y / camera.base.zoom, 50 / camera.base.zoom, WHITE);
-    DrawText(TextFormat("stored score: %.1f", player.score), camera.base.target.x - camera.base.offset.x / camera.base.zoom, camera.base.target.y - camera.base.offset.y / camera.base.zoom + 50 / camera.base.zoom, 25 / camera.base.zoom, WHITE);
-    DrawFPS(camera.base.target.x - camera.base.offset.x / camera.base.zoom, camera.base.target.y - camera.base.offset.y / camera.base.zoom + 80 / camera.base.zoom);
+    EndMode2D();
+    DrawText(TextFormat("score: %.1f", base.score), 0, 0, 50, WHITE);
+    DrawText(TextFormat("stored score: %.1f", player.score), 0, 50, 25, WHITE);
+    DrawFPS(0, 80 );
 
     EndDrawing();
 

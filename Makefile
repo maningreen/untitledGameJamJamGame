@@ -12,6 +12,7 @@ OUTPUT = build/game
 WEBOUTPUT = build/index.html
 WEBGARBAGE = src/*.gch
 OUTDIR = build/
+ZIPDIR = ./*.zip
 
 program:
 	$(CC) $(SRC) -o $(OUTPUT) $(LDFLAGS) $(LINFLAGS)
@@ -29,3 +30,15 @@ profile:
 clean:
 	rm -f $(OUTDIR)* $(WEB-OUT)
 	rm -f $(WEBGARBAGE)
+	rm -f $(ZIPDIR)
+
+full:
+	make clean
+	make
+	zip linux.zip $(OUTDIR)/* resources
+	make clean
+	make windows
+	zip windows.zip $(OUTDIR)/* resources
+	make clean
+	make web
+	zip web.zip $(OUTDIR)/*
